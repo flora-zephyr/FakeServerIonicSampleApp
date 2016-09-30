@@ -8,8 +8,9 @@
     },
     {
       "id": 2,
-      "title": "wesh",
-      "author": "moi"
+      "title": "modifié",
+      "author": "Fred toujours",
+      "content": "bref comme d'hab !"
     },
     {
       "id": 3,
@@ -18,8 +19,9 @@
     },
     {
       "id": 6,
-      "title": "test",
-      "author": "oim"
+      "title": "test fou",
+      "author": "oim la mouche",
+      "content": "ajouer un contenu ? c'est possible ?"
     },
     {
       "id": 7,

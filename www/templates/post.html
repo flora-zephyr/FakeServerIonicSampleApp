@@ -9,9 +9,10 @@
 			<div ng-if="com.postId == lepost.id" ng-repeat="com in comments">
 				<h4>commentaire :</h4> <p>{{com.body}}</p>
 			</div>
-			<div class="item item-divider"><a class="button" ng-click="updatePost(post.id)">Modifier le post </a>
+			<div class="item item-divider"><a class="button" ng-click="goToUpdatePost(lepost.id)">Modifier le post </a>
 				<a class="button" ng-click="deletePost(post.id)">Supprimer le post </a>
 			</div>
+			<p class="requete">Requete : PATCH/id =>  $http.patch(URL +'posts/{{lepost.id}}), {title : postTitle, author : postAuthor, content : postContent})</p>
 			<p class="requete">Requete : DELETE/id =>  $http.delete(http://localhost:3000/posts/{{lepost.id}})</p>
 		</div>
 	</ion-content>

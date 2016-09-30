@@ -1,0 +1,22 @@
+<ion-view cache-view="false">
+	<ion-content has-header="true" style="margin-top:50px;">
+
+		<div class="list">
+			<label class="item item-input">
+				<span class="input-label">Titre du post</span>
+				<input type="text" name="postTitle" ng-model="lepost.title">
+			</label>
+			<label class="item item-input">
+				<span class="input-label">Auteur du post</span>
+				<input type="text" name="postAuthor" ng-model="lepost.author">
+			</label>
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">Contenu du post</span>
+				<textarea rows="10" cols="50" name="postContent" ng-model="lepost.content"></textarea>
+			</label>
+		</div>
+		<br>
+		<!-- ce bouton réucpère toutes les infos du formulaire afin de les envoyer pour mettre à jour le post -->
+		<a class="button button-stable" ng-click="updatePost(lepost.id, lepost.title, lepost.author, lepost.content)">Valider</a>
+	</ion-content>
+</ion-view>

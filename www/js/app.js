@@ -6,7 +6,7 @@
 
 //a modifier avec l'adresse Ip de votre ordinateur pour que cela fonctionne
 //sur un appareil portable
-var URL = "http://localhost:3000/";
+var URL = "http://192.168.0.30:3000/";
 
 angular.module('starter', ['ionic'])
 
@@ -33,7 +33,8 @@ angular.module('starter', ['ionic'])
 	$stateProvider
 	 	.state('home', { url: "/home", templateUrl: "templates/home.html", controller : 'AppCtrl'})
 	 	.state('menu', { url: "/menu", templateUrl: "templates/menu.html", controller : 'AppCtrl'})
-	 	.state('post', { url: "/post", templateUrl: "templates/post.html", controller : 'AppCtrl'});
+	 	.state('post', { url: "/post", templateUrl: "templates/post.html", controller : 'AppCtrl'})
+	 	.state('post-update', { url: "/post-update/:id", templateUrl: "templates/update_post.html", controller : 'AppCtrl', params : {id : null}});
   	$urlRouterProvider.otherwise('/menu');
 })
 
@@ -48,11 +49,14 @@ angular.module('starter', ['ionic'])
 		$state.go('home');
 	};
 
-	//méthode GET pour afficher tous les posts
-	$scope.showPosts = function() {
+	function initPosts (){
 		$http.get(URL +'posts').then(function(posts){
 			$rootScope.posts = posts.data;
 		});
+	}
+	//méthode GET pour afficher tous les posts
+	$scope.showPosts = function() {
+		initPosts ();
 	};
 
 	//méthode GET pour afficher tous les commentaires
@@ -100,5 +104,28 @@ angular.module('starter', ['ionic'])
 		initComs();
 		console.log($rootScope.lepost);
 		$state.go('post');
+	};
+
+	$scope.goToUpdatePost = function(postID){
+		var id = postID;
+		console.log(id);
+		$http.get(URL +'posts/' + id).then(function(post){
+			$rootScope.lepost = post.data;
+		});
+		$state.go('post-update', {id :id});
+	};
+
+	//permet d'update un post en prenant ses paramètres depuis le ng-click jusqu'à la requête
+	$scope.updatePost = function(postId, postTitle, postAuthor,postContent){
+		var id = postId;
+		$http.patch(URL +'posts/' + id , {title : postTitle, author : postAuthor, content : postContent})
+		.success(function (data, status, headers, config) {
+			console.log("ok");
+			$state.go("home");
+			window.location.reload();
+            })
+            .error(function (data, status, header, config) {
+            });
+
 	};
 });
