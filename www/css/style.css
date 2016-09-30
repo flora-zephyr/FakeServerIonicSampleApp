@@ -1,0 +1,47 @@
+/* Empty. Add your own CSS if you like */
+
+.comfrompost {
+	display: block;
+	float: right;
+	top : 50;
+	margin-right: 30px;
+}
+
+h1, h2 {
+	text-align: lef;
+	margin-bottom: 20px;
+	margin-top: 20px;
+
+}
+
+ion-content {
+	padding: 20px;
+	background-color: white;
+}
+
+.button-stable {
+	text-align: center;
+	display: block;
+	width: 70%;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.button-show {
+
+	display: block;
+
+
+}
+
+.requete {
+	font-style: italic;
+	color: #154d59;
+	/*background-color: rgba(215, 191, 173, 0.2);*/
+	padding: 10px;
+}
+
+
+.bar-custom {
+
+}

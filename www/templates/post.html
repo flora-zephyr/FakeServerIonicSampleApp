@@ -1,0 +1,18 @@
+<ion-view>
+	<ion-content has-header="true" style="margin-top:40px;">
+		<div class="card">
+			<div class="item item-divider">
+				<h3>Détails du post {{lepost.id}} : {{lepost.title}}, par {{lepost.author}}</h3>
+			</div>
+			<p>{{lepost.content}}</p>
+			<br>
+			<div ng-if="com.postId == lepost.id" ng-repeat="com in comments">
+				<h4>commentaire :</h4> <p>{{com.body}}</p>
+			</div>
+			<div class="item item-divider"><a class="button" ng-click="updatePost(post.id)">Modifier le post </a>
+				<a class="button" ng-click="deletePost(post.id)">Supprimer le post </a>
+			</div>
+			<p class="requete">Requete : DELETE/id =>  $http.delete(http://localhost:3000/posts/{{lepost.id}})</p>
+		</div>
+	</ion-content>
+</ion-view>

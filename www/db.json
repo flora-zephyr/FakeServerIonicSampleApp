@@ -1,0 +1,50 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "first-title",
+      "author": "Fred",
+      "content": "Eo adducta re per Isauriam, rege Persarum bellis finitimis inligato repellenteque a conlimitiis suis ferocissimas gentes"
+    },
+    {
+      "id": 2,
+      "title": "wesh",
+      "author": "moi"
+    },
+    {
+      "id": 3,
+      "title": "Bla",
+      "author": "lui"
+    },
+    {
+      "id": 6,
+      "title": "test",
+      "author": "oim"
+    },
+    {
+      "id": 7,
+      "title": "titre",
+      "author": "lauteur"
+    },
+    {
+      "title": "test id 4",
+      "author": "dxz",
+      "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "some other comment",
+      "postId": 3
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

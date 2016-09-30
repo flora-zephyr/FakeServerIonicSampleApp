@@ -1,0 +1,49 @@
+<ion-view cache-view="false">
+	<ion-content has-header="true" style="margin-top:50px;">
+
+	<!-- fomulaire pour ajouter un post -->
+	<h2>Ajouter un nouveau post</h2>
+		<p class="requete">Requete : POST => $http.post(URL +'posts', {title : postTitle, author : postAuthor})</p>
+		<div class="list">
+            <label class="item item-input">
+                <span class="input-label">Titre du post</span>
+                <input type="text" name="postTitle" ng-model="postTitle">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Auteur du post</span>
+                <input type="text" name="postAuthor" ng-model="postAuthor">
+            </label>
+        </div>
+
+		 <!-- Et on valide le postage du post !  -->
+		<a class="button button-stable" ng-click="postaPost(postTitle, postAuthor)">Valider</a>
+
+		<hr>
+		<!-- ici on récupère et affiche tous les 'posts' ainsi que leurs informations -->
+		<h2>Liste des Posts</h2>
+		<p class="requete">Requete : GET => $http.get(URL +'posts')</p>
+		<a  ng-click="showPosts()">voir tous les posts</a>
+		<div ng-repeat="post in posts" class="card">
+			<div class="item item-divider"><h3>post n° : {{post.id}} titre : {{post.title}}</h3></div>
+			<a class="button" ng-click="goToPost(post.id)">Voir les détails</a>
+			<p class="requete">Requete : GET/id =>  http://localhost:3000/posts/{{post.id}}</p>
+		</div>
+		<hr>
+
+		<!-- là, c'était pour tester le post -->
+		<!-- <a class="button" ng-click="ajoutPostTest()">Post test</a> -->
+
+		<!-- Même chose pour les commentaires -->
+		<h2>Liste des Commentaires</h2>
+		<p class="requete">Requete : GET => $http.get(URL +'comments')</p>
+		<a ng-click="showComments()">voir tous les commentaires</a>
+		<div ng-repeat="com in comments">
+			<h3>Id du commentaire : {{com.id}}</h3>
+			<p>contenu du commentaire : {{com.body}}</p>
+			<p>commentaire lié au post n°: {{com.postId}}</p>
+		</div>
+		<br>
+
+	</ion-content>
+
+</ion-view>
