@@ -45,3 +45,13 @@ ion-content {
 .bar-custom {
 
 }
+
+
+.modal {
+	display: block;
+	width:300px;
+	min-height:300px !important;
+	margin: 50px;
+	border: 1px solid black;
+
+}

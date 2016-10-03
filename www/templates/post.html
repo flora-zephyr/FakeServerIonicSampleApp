@@ -6,11 +6,13 @@
 			</div>
 			<p>{{lepost.content}}</p>
 			<br>
+			<h4>commentaire(s) :</h4>
 			<div ng-if="com.postId == lepost.id" ng-repeat="com in comments">
-				<h4>commentaire :</h4> <p>{{com.body}}</p>
+				<p>{{com.body}}</p>
 			</div>
-			<div class="item item-divider"><a class="button" ng-click="goToUpdatePost(lepost.id)">Modifier le post </a>
-				<a class="button" ng-click="deletePost(post.id)">Supprimer le post </a>
+			<div class="item item-divider"><a class="button" ng-click="goToUpdatePost(lepost.id)"><i class="icon ion-edit"></i></a>
+				<a class="button" ng-click="deletePost(lepost.id)"><i class="icon ion-trash-b"></i></a>
+				<a class="button" ng-click="commentPost(lepost.id)"><i class="icon ion-clipboard"></i></a>
 			</div>
 			<p class="requete">Requete : PATCH/id =>  $http.patch(URL +'posts/{{lepost.id}}), {title : postTitle, author : postAuthor, content : postContent})</p>
 			<p class="requete">Requete : DELETE/id =>  $http.delete(http://localhost:3000/posts/{{lepost.id}})</p>

@@ -26,12 +26,8 @@
     {
       "id": 7,
       "title": "titre",
-      "author": "lauteur"
-    },
-    {
-      "title": "test id 4",
-      "author": "dxz",
-      "id": 8
+      "author": "lauteur",
+      "content": "test contenu du post etc........"
     }
   ],
   "comments": [
@@ -44,6 +40,16 @@
       "id": 2,
       "body": "some other comment",
       "postId": 3
+    },
+    {
+      "body": "test de comentaries !",
+      "postId": 7,
+      "id": 3
+    },
+    {
+      "body": "deuxième comm sur le 1 !",
+      "postId": 1,
+      "id": 4
     }
   ],
   "profile": {

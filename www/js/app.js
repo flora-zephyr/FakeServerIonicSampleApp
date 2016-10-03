@@ -38,7 +38,7 @@ angular.module('starter', ['ionic'])
   	$urlRouterProvider.otherwise('/menu');
 })
 
-.controller('AppCtrl', function($http, $scope, $state, $rootScope, $stateParams){
+.controller('AppCtrl', function($http, $scope, $state, $rootScope, $stateParams,  $ionicModal){
 
 	$scope.idpost = $stateParams.idpost;
 	$rootScope.posts = [];
@@ -91,9 +91,15 @@ angular.module('starter', ['ionic'])
 
 	//Méthode delete avec l'id du post à détruire
 	$scope.deletePost = function(idpost){
-		$http.delete(URL +"posts/" + idpost+"");
-		$state.go('home');
-		window.location.reload();
+		var id = idpost;
+		console.log(id);
+		if (confirm('Etes-vous sûr de vouloir supprimer ce post ?')) {
+
+			$http.delete(URL +"posts/" + id).then(function(response){
+					$state.go('home');
+					window.location.reload();
+			});
+		}
 	};
 
 	$scope.goToPost = function (postID) {
@@ -126,6 +132,58 @@ angular.module('starter', ['ionic'])
             })
             .error(function (data, status, header, config) {
             });
+
+	};
+
+	$scope.commentPost = function(idpost){
+		$scope.idPost = idpost;
+		$scope.modal.show();
+
+	};
+
+
+	$ionicModal.fromTemplateUrl('templates/comment_a_post.html', {
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.modal = modal;
+	});
+	/* Ouvrir la fenêtre modale*/
+	$scope.openModal = function(idpost) {
+		$scope.idPost = idpost;
+		$scope.modal.show();
+	};
+	/* La fermer */
+	$scope.closeModal = function() {
+		$scope.modal.hide();
+	};
+	/* La "cleaner" une fois utilisée*/
+	$scope.$on('$destroy', function() {
+		$scope.modal.remove();
+	});
+	/* Pour faire quelque chose à la fermeture */
+	$scope.$on('modal.hidden', function() {
+		// Execute action
+	});
+	/* Pour faire quelque chose à la suppression */
+	$scope.$on('modal.removed', function() {
+		// Execute action
+	});
+
+	$scope.saveComPost = function(idPost, comContent) {
+		$http.post(URL +'comments', {body  : comContent, postId : idPost}).then(function(data){
+			$state.go('home');
+			window.location.reload();
+		});
+	};
+
+	$scope.searchAuth = function(author) {
+		console.log(author);
+		$http.get(URL +'posts?author=' +author)
+		.then(function(posts){
+			$rootScope.foundPosts = posts.data;
+		});
+
 
 	};
 });

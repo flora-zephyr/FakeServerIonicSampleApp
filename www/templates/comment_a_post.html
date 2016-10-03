@@ -1,0 +1,13 @@
+<ion-modal-view>
+	<ion-content>
+		<h1>POST  N° {{idPost}}</h1>
+
+		<label class="item item-input item-stacked-label">
+			<span class="input-label">Votre commentaire</span>
+			<textarea rows="10" cols="50" name="commentPost" ng-model="comContent"></textarea>
+		</label>
+
+		<a class="button button-stable" ng-click="saveComPost(idPost, comContent)">Valider le commentaire</a>
+	</ion-content>
+
+</ion-modal-view>
