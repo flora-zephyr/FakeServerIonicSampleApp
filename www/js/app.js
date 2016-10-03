@@ -89,12 +89,11 @@ angular.module('starter', ['ionic'])
 		});
 	};
 
-	//Méthode delete avec l'id du post à détruire
+	//Méthode delete avec l'id du post à détruire + message de confirmation
 	$scope.deletePost = function(idpost){
 		var id = idpost;
 		console.log(id);
 		if (confirm('Etes-vous sûr de vouloir supprimer ce post ?')) {
-
 			$http.delete(URL +"posts/" + id).then(function(response){
 					$state.go('home');
 					window.location.reload();
@@ -135,13 +134,14 @@ angular.module('starter', ['ionic'])
 
 	};
 
+	//récupérer l'id du post pour lui ajouter un commentaire
 	$scope.commentPost = function(idpost){
 		$scope.idPost = idpost;
 		$scope.modal.show();
 
 	};
 
-
+	//Actions de la fenêtre modale
 	$ionicModal.fromTemplateUrl('templates/comment_a_post.html', {
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -170,6 +170,7 @@ angular.module('starter', ['ionic'])
 		// Execute action
 	});
 
+	//Sauvegarder le commentaire, avec l'id du post auquel il est lié
 	$scope.saveComPost = function(idPost, comContent) {
 		$http.post(URL +'comments', {body  : comContent, postId : idPost}).then(function(data){
 			$state.go('home');
@@ -177,6 +178,7 @@ angular.module('starter', ['ionic'])
 		});
 	};
 
+	//chercher l'auteur et afficher ses posts
 	$scope.searchAuth = function(author) {
 		console.log(author);
 		$http.get(URL +'posts?author=' +author)

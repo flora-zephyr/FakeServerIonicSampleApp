@@ -11,12 +11,7 @@ Vous pouvez voir la création de l'application en pas à pas sur le site des dé
 
 ## Todos :
 
-- pouvoir modifier un post
-- pouvoir ajouter un commentaire à un post particulier
-- pouvoir chercher un post par son auteur
-
--> le tout est WIP
-
+Passer à la V2 !
 
 
 ## Issues

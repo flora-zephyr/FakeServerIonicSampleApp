@@ -1,7 +1,8 @@
 <ion-view cache-view="false">
 	<ion-content has-header="true" style="margin-top:50px;">
 
-
+	<!-- fomulaire pour chercher les posts d'un auteur -->
+	<!-- seul le nom exact peut fonctionner -->
 	<h2>Rechercher un post par auteur</h2>
 	<label class="item item-input">
 		<span class="input-label">Nom de l'auteur : </span>
@@ -9,7 +10,7 @@
 	</label>
 	<a class="button button-stable" ng-click="searchAuth(nameAuth)">Chercher</a>
 
-
+	<!-- liste des posts trouvés -->
 	<div ng-repeat="post in foundPosts" class="card">
 		<div class="item item-divider"><h3>post n° : {{post.id}} titre : {{post.title}}</h3></div>
 		<a class="button" ng-click="goToPost(post.id)">Voir les détails</a>
